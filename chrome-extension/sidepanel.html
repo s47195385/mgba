@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mGBA Emulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎮 mGBA Emulator</h1>
+      <p class="subtitle">Game Boy Advance in Your Browser</p>
+    </div>
+
+    <div class="controls">
+      <div class="file-input-wrapper">
+        <input type="file" id="romFile" accept=".gba,.gb,.gbc,.zip" />
+        <label for="romFile" class="file-label">
+          📁 Select ROM File
+        </label>
+      </div>
+      
+      <div id="romInfo" class="rom-info hidden">
+        <p><strong>Loaded:</strong> <span id="romName"></span></p>
+      </div>
+
+      <div class="button-group">
+        <button id="playBtn" class="btn btn-primary" disabled>▶️ Play</button>
+        <button id="pauseBtn" class="btn btn-secondary" disabled>⏸️ Pause</button>
+        <button id="resetBtn" class="btn btn-secondary" disabled>🔄 Reset</button>
+      </div>
+
+      <div class="info-box">
+        <h3>Controls</h3>
+        <ul>
+          <li><strong>Arrow Keys:</strong> D-Pad</li>
+          <li><strong>Z:</strong> B Button</li>
+          <li><strong>X:</strong> A Button</li>
+          <li><strong>A:</strong> L Button</li>
+          <li><strong>S:</strong> R Button</li>
+          <li><strong>Enter:</strong> Start</li>
+          <li><strong>Shift:</strong> Select</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="emulatorContainer" class="emulator-container">
+      <div id="emulatorCanvas" class="emulator-canvas">
+        <canvas id="screen" width="240" height="160"></canvas>
+      </div>
+      
+      <div id="loadingMessage" class="message">
+        <p>Load a ROM file to start playing!</p>
+        <p class="hint">Supported formats: .gba, .gb, .gbc</p>
+      </div>
+      
+      <div id="errorMessage" class="message error hidden"></div>
+    </div>
+
+    <div class="footer">
+      <p>
+        ⚠️ <strong>Note:</strong> This is a wrapper for the mGBA emulator. 
+        To use this extension, you need to have the mGBA WebAssembly build.
+      </p>
+      <p class="small">
+        You own the games you play. Only use ROMs you legally own.
+      </p>
+    </div>
+  </div>
+
+  <script src="emulator.js"></script>
+</body>
+</html>
